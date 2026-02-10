@@ -1,4 +1,3 @@
-require('dotenv').config()
 const express = require('express')
 const fibonacci = require('../utils/fibonacci.js')
 const prime = require('../utils/prime.js')
@@ -52,7 +51,8 @@ app.post('/bfhl', async (req, res) => {
       data: result
     })
 
-  } catch {
+  } catch (error) {
+    console.error('Error:', error)
     res.status(500).json({
       is_success: false,
       official_email: process.env.OFFICIAL_EMAIL,
